@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>javaScript Clock</title>
+
+    <style>
+      .clock {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      div#hour-minuts-seconds {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .digit-design {
+        background: red;
+        color: white;
+        font-size: 100px;
+        font-family: fantasy;
+        margin-right: 48px;
+        padding: 0 15px;
+      }
+
+      .digit-design:last-child {
+        margin-right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock">
+      <div id="hour-minuts-seconds">
+        <div class="digit-design" id="hour">00</div>
+        <div class="digit-design" id="minutes">00</div>
+        <div class="digit-design" id="seconds">00</div>
+        <div class="digit-design" id="session">00</div>
+      </div>
+    </div>
+
+    <script>
+      setInterval(function () {
+
+        let session = 'AM';
+            currentTime = new Date();
+        
+        // get hours
+        h = currentTime.getHours();
+        if(h>12){
+            session = 'PM';
+        }
+
+        if(h>12){
+            h -= 12;
+            if(h<=9){
+                h = '0' + h;
+            }
+        }
+
+        // get minutes
+        m = currentTime.getMinutes();
+        if(m<=9){
+            m = '0' + m;
+        }
+
+        // get seconds
+        s = currentTime.getSeconds();
+        if(s<=9){
+            s = '0' + s;
+        }
+
+        document.getElementById("hour").innerHTML = h;
+        document.getElementById("minutes").innerHTML = m;
+        document.getElementById("seconds").innerHTML = s;
+        document.getElementById("session").innerHTML = session;
+      }, 1000);
+    </script>
+
+    <!-- <script>
+      setInterval(function () {
+        let session = "AM";
+        currnetTime = new Date();
+
+        // get hour
+        h = currnetTime.getHours();
+        
+        //get AM PM
+        if (h > 12) {
+            session = 'PM';
+        }
+
+        if (h >= 12) {
+          h -= 12;
+
+          if (h <= 9) {
+            h = "0" + h;
+          }
+        }
+
+        
+
+        // get minutes
+        m = currnetTime.getMinutes();
+        if (m <= 9) {
+          m = "0" + m;
+        }
+
+        // get seconds
+        s = currnetTime.getSeconds();
+        if (s <= 9) {
+          s = "0" + s;
+        }
+
+        document.getElementById("hour").innerHTML = h;
+        document.getElementById("minutes").innerHTML = m;
+        document.getElementById("seconds").innerHTML = s;
+        document.getElementById("session").innerHTML = session;
+      }, 1000);
+    </script> -->
+  </body>
+</html>
